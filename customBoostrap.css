@@ -1,0 +1,44 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Lora:wght@400;700&display=swap');
+
+/* CSS Variables */
+:root {
+    /* Primary Colors */
+    --bs-primary: #1A8407; /* Custom green */
+    --bs-primary-hover: #176b06; /* Slightly darker green for hover effects */
+    --bs-primary-text: #ffffff; /* Text on primary buttons */
+
+    /* Secondary Colors */
+    --bs-secondary: #6c757d; /* Bootstrap default secondary gray */
+    --bs-secondary-hover: #5c636a; /* Darker secondary on hover */
+
+    /* Other Colors */
+    --bs-success: #28a745;
+    --bs-danger: #dc3545;
+    --bs-warning: #ffc107;
+    --bs-info: #17a2b8;
+    --bs-light: #f8f9fa;
+    --bs-dark: #343a40;
+
+    /* Background Colors */
+    --bs-body-bg: #ffffff; /* White background */
+    --bs-footer-bg: #343a40; /* Dark footer */
+
+    /* Font Families */
+    --font-primary: 'Roboto', sans-serif;
+    --font-secondary: 'Lora', serif;
+
+    /* Text Colors */
+    --text-primary: #212529; /* Default Bootstrap text color */
+    --text-secondary: #6c757d; /* Muted text */
+    --text-link: var(--bs-primary); /* Links matching primary color */
+}
+
+/* Apply the fonts */
+body {
+    font-family: var(--font-primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-secondary);
+}
