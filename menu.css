@@ -1,0 +1,110 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f5e3;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.menu-container {
+    width: 90%;
+    max-width: 400px;
+    background-color: #fff5cc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header Section */
+.menu-header {
+    background-color: #ffcc33;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.menu-header h1 {
+    font-size: 24px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Menu Items Section */
+.menu-items {
+    padding: 15px;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+    gap: 50px; /* Add more space between name and price */
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.item-name {
+    font-size: 16px;
+}
+
+.item-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Responsive Design for Mobile (480px and smaller) */
+@media only screen and (max-width: 480px) {
+    .menu-header h1 {
+        font-size: 20px;
+    }
+
+    .item-name, .item-price {
+        font-size: 14px;
+    }
+}
+
+/* Responsive Design for Tablet (760px and smaller) */
+@media only screen and (max-width: 760px) {
+    .menu-item {
+        display: block; /* Stack items vertically */
+        text-align: left;
+    }
+
+    .item-name,
+    .item-price {
+        display: block;
+        width: 100%;
+        text-align: left; /* Align everything to the left */
+        font-size: 16px;
+    }
+
+    .item-price {
+        text-align: right; /* Price remains aligned to the right */
+    }
+}
+
+/* Larger Screens (>760px): Increase space between name and price */
+@media only screen and (min-width: 761px) {
+    .menu-container {
+        width: 60%; /* Increase width for larger screens */
+        max-width: 800px; /* Allow container to grow */
+    }
+
+    .menu-item {
+        gap: 100px; /* Increase space between name and price */
+    }
+}
