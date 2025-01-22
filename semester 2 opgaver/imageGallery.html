@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top 10 Movies</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+      img {
+        width: 100px;
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s;
+      }
+      img:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Top 10 Movies from IMDB</h1>
+
+    <table id="moviesTable">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Title</th>
+          <th>Year</th>
+          <th>Rating</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Movie rows will be inserted here -->
+      </tbody>
+    </table>
+
+    <script>
+      // Arrays containing movie data
+      const ranks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const titles = [
+        "The Shawshank Redemption",
+        "The Godfather",
+        "The Dark Knight",
+        "Pulp Fiction",
+        "The Lord of the Rings: The Return of the King",
+        "Schindler's List",
+        "Fight Club",
+        "Forrest Gump",
+        "Inception",
+        "The Empire Strikes Back",
+      ];
+      const years = [
+        1994, 1972, 2008, 1994, 2003, 1993, 1999, 1994, 2010, 1980,
+      ];
+      const ratings = [9.3, 9.2, 9.0, 8.9, 8.9, 8.9, 8.8, 8.8, 8.8, 8.7];
+      const images = [
+        "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_UX100.jpg",
+        "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX100.jpg",
+        "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UX100.jpg",
+        "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX100.jpg",
+        "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX100.jpg",
+        "https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX100.jpg",
+        "https://m.media-amazon.com/images/M/MV5BNDIzNDU0YzEtYzE5Ni00ZjlkLTk5ZjgtNjM3NWE4YzA3Nzk3XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX100.jpg",
+        "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX100.jpg",
+        "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX100.jpg",
+        "https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX100.jpg",
+      ];
+
+      const tableBody = document
+        .getElementById("moviesTable")
+        .getElementsByTagName("tbody")[0];
+
+      // Loop through the arrays to create table rows
+      for (let i = 0; i < ranks.length; i++) {
+        const row = tableBody.insertRow();
+        const cellRank = row.insertCell(0);
+        const cellTitle = row.insertCell(1);
+        const cellYear = row.insertCell(2);
+        const cellRating = row.insertCell(3);
+        const cellImage = row.insertCell(4);
+
+        cellRank.textContent = ranks[i];
+        cellTitle.textContent = titles[i];
+        cellYear.textContent = years[i];
+        cellRating.textContent = ratings[i];
+
+        const img = document.createElement("img");
+        img.src = images[i];
+        cellImage.appendChild(img);
+      }
+    </script>
+  </body>
+</html>

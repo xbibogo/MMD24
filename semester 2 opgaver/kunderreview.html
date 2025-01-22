@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kundeanmeldelser</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0e68a;
+        padding: 20px;
+      }
+      .review {
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 10px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+      .prime-reviewer {
+        border-left: 5px solid #4caf50;
+      }
+      .new-reviewer {
+        border-left: 5px solid #2196f3;
+      }
+      .poor-review {
+        border-left: 5px solid #f44336;
+      }
+      .stars {
+        color: gold;
+      }
+      .star {
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Kundeanmeldelser til Dance Off v. 9</h1>
+    <div id="reviewsContainer"></div>
+
+    <script>
+      // JSON data format for reviews
+      const reviewsData = [
+        {
+          username: "Wilhi85",
+          reviewDate: "11/18/2024",
+          title: "My Favorite Workout Game",
+          rating: 5,
+          review:
+            "I've owned all of the Dance Off series since I started playing.",
+        },
+        {
+          username: "GoldFry96",
+          reviewDate: "11/17/2024",
+          title: "Poor Choreography",
+          rating: 2,
+          review:
+            "A so-so release of the latest game. Where this follows previous titles, it fails to innovate.",
+        },
+        {
+          username: "Mitten45",
+          reviewDate: "11/15/2024",
+          title: "Buggy with Poor Tech Support",
+          rating: 1,
+          review:
+            "The installation was buggy and kept crashing my gaming console. I spent several hours on tech support with no resolution to my problem. I would give it a zero star rating.",
+        },
+        {
+          username: "Tompkins83",
+          reviewDate: "11/13/2024",
+          title: "Nice Improvement",
+          rating: 4,
+          review:
+            "The installation of Dance Off improves upon the 8th Edition only slightly.",
+        },
+      ];
+
+      const reviewsContainer = document.getElementById("reviewsContainer");
+
+      // Function to display reviews
+      function displayReviews(reviews) {
+        reviews.forEach((review) => {
+          const reviewDiv = document.createElement("div");
+          reviewDiv.classList.add("review");
+
+          // Add specific classes based on conditions
+          if (review.rating === 5) {
+            reviewDiv.classList.add("prime-reviewer");
+          } else if (review.rating === 1) {
+            reviewDiv.classList.add("poor-review");
+          } else {
+            reviewDiv.classList.add("new-reviewer");
+          }
+
+          // Create star rating
+          const stars = createStarRating(review.rating);
+
+          reviewDiv.innerHTML = `
+                <h3>${review.title}</h3>
+                <p><strong>By:</strong> ${review.username} | <strong>Review Date:</strong> ${review.reviewDate} | <strong>Rating:</strong> <span class="stars">${stars}</span></p>
+                <p>${review.review}</p>
+            `;
+
+          reviewsContainer.appendChild(reviewDiv);
+        });
+      }
+
+      // Function to create star rating
+      function createStarRating(rating) {
+        let starHTML = "";
+        for (let i = 1; i <= 5; i++) {
+          if (i <= rating) {
+            starHTML += "★"; // Filled star
+          } else {
+            starHTML += "☆"; // Empty star
+          }
+        }
+        return starHTML;
+      }
+
+      // Display the reviews
+      displayReviews(reviewsData);
+    </script>
+  </body>
+</html>

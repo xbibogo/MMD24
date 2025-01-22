@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Order Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #ffcc66;
+        padding: 20px;
+      }
+      h1 {
+        color: #4b0082;
+      }
+      .menu-item {
+        margin: 10px 0;
+      }
+      .total {
+        font-weight: bold;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Restaurant Order Calculator</h1>
+
+    <div class="menu-item">
+      <input type="checkbox" id="friedChicken" value="10.95" /> Fried chicken
+      ($10.95)
+    </div>
+    <div class="menu-item">
+      <input type="checkbox" id="friedHalibut" value="13.95" /> Fried halibut
+      ($13.95)
+    </div>
+    <div class="menu-item">
+      <input type="checkbox" id="hamburger" value="9.95" /> Hamburger ($9.95)
+    </div>
+    <div class="menu-item">
+      <input type="checkbox" id="grilledSalmon" value="18.95" /> Grilled salmon
+      ($18.95)
+    </div>
+    <div class="menu-item">
+      <input type="checkbox" id="sideSalad" value="7.95" /> Side salad ($7.95)
+    </div>
+
+    <div class="total">
+      <p>Subtotal: $<span id="subtotal">0.00</span></p>
+      <p>Tax (7%): $<span id="tax">0.00</span></p>
+      <p>Total: $<span id="total">0.00</span></p>
+    </div>
+
+    <script>
+      const taxRate = 0.07;
+
+      document.querySelectorAll(".menu-item input").forEach((item) => {
+        item.addEventListener("change", calculateTotal);
+      });
+
+      function calculateTotal() {
+        let subtotal = 0;
+
+        document
+          .querySelectorAll(".menu-item input:checked")
+          .forEach((item) => {
+            subtotal += parseFloat(item.value);
+          });
+
+        const tax = subtotal * taxRate;
+        const total = subtotal + tax;
+
+        document.getElementById("subtotal").innerText = subtotal.toFixed(2);
+        document.getElementById("tax").innerText = tax.toFixed(2);
+        document.getElementById("total").innerText = total.toFixed(2);
+      }
+    </script>
+  </body>
+</html>
