@@ -37,9 +37,88 @@
         transform: scale(1.1);
         cursor: pointer;
       }
+      /* Dark mode styles */
+      .dark-mode {
+        background-color: #1a1a1a;
+        color: #fff;
+      }
+
+      .dark-mode table {
+        background-color: #2d2d2d;
+        color: #fff;
+      }
+
+      .dark-mode th,
+      .dark-mode td {
+        border-color: #444;
+      }
+
+      .dark-mode th {
+        background-color: #1e4620;
+      }
+
+      /* Toggle switch styles */
+      .theme-switch-wrapper {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+      }
+
+      .theme-switch {
+        display: inline-block;
+        height: 34px;
+        position: relative;
+        width: 60px;
+      }
+
+      .theme-switch input {
+        display: none;
+      }
+
+      .slider {
+        background-color: #ccc;
+        bottom: 0;
+        cursor: pointer;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: 0.4s;
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        background-color: #fff;
+        bottom: 4px;
+        content: "";
+        height: 26px;
+        left: 4px;
+        position: absolute;
+        transition: 0.4s;
+        width: 26px;
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background-color: #4caf50;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(26px);
+      }
     </style>
   </head>
   <body>
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox" />
+        <div class="slider"></div>
+      </label>
+      <span style="margin-left: 10px">Dark Mode</span>
+    </div>
+
     <h1>Top 10 Movies from IMDB</h1>
 
     <table id="moviesTable">
@@ -111,6 +190,30 @@
         img.src = images[i];
         cellImage.appendChild(img);
       }
+
+      // Dark mode toggle functionality
+      const toggleSwitch = document.querySelector("#checkbox");
+      const currentTheme = localStorage.getItem("theme");
+
+      if (currentTheme) {
+        document.documentElement.setAttribute("data-theme", currentTheme);
+        if (currentTheme === "dark") {
+          toggleSwitch.checked = true;
+          document.body.classList.add("dark-mode");
+        }
+      }
+
+      function switchTheme(e) {
+        if (e.target.checked) {
+          document.body.classList.add("dark-mode");
+          localStorage.setItem("theme", "dark");
+        } else {
+          document.body.classList.remove("dark-mode");
+          localStorage.setItem("theme", "light");
+        }
+      }
+
+      toggleSwitch.addEventListener("change", switchTheme);
     </script>
   </body>
 </html>
