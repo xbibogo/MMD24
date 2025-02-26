@@ -3,36 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lazy Loading Images Example</title>
+    <title>Lazy Load Example</title>
     <style>
-      .lazy-image {
-        width: 100%;
-        height: auto;
-        display: block;
-        margin: 20px 0;
-      }
-      .placeholder {
-        background-color: #f0f0f0;
+      .image-container {
         width: 100%;
         height: 300px;
-        display: block;
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .image-container img {
+        max-width: 100%;
+        max-height: 100%;
       }
     </style>
   </head>
   <body>
-    <h1>Lazy Loading Images Example</h1>
+    <h1>Lazy Load Example</h1>
     <div class="image-container">
-      <img
-        data-src="https://images.unsplash.com/photo-1517511620798-cec17d428bc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjYzNTl8MHwxfGFsbHwzfHx8fHx8fHwxNjY2NjY2NjY2&ixlib=rb-1.2.1&q=80&w=400"
-        alt="Lazy Loaded Image 2"
-        class="lazy-image placeholder"
-      />
-      <img
-        data-src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjYzNTl8MHwxfGFsbHw1fHx8fHx8fHwxNjY2NjY2NjY2&ixlib=rb-1.2.1&q=80&w=400"
-        alt="Lazy Loaded Image 3"
-        class="lazy-image placeholder"
-      />
+      <img data-src="1.avif" alt="1" />
     </div>
-    <script src="mainlazy.js"></script>
+    <div class="image-container">
+      <img data-src="2.avif" alt="2" />
+    </div>
+    <div class="image-container">
+      <img data-src="3.avif" alt="3" />
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const lazyImages = document.querySelectorAll("img[data-src]");
+
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.getAttribute("data-src");
+              img.onload = () => (img.style.display = "block");
+              observer.unobserve(img);
+            }
+          });
+        });
+
+        lazyImages.forEach((img) => {
+          imageObserver.observe(img);
+        });
+      });
+    </script>
   </body>
 </html>
