@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lightbox Galleri</title>
+    <link href="dist/css/lightbox.css" rel="stylesheet" />
+    <style>
+      body {
+        background-color: #d0eaff; /* Light blue */
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+
+      /* Gallery layout */
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .gallery a {
+        display: block;
+        text-decoration: none;
+        text-align: center;
+      }
+
+      .gallery img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover; /* Keeps image proportions */
+        border: 2px solid #004d40; /* Dark green border */
+        border-radius: 10px; /* Rounded corners */
+      }
+
+      .caption {
+        display: block;
+        background-color: #004d40; /* Dark green */
+        color: #ffffff; /* White text */
+        padding: 5px;
+        margin-top: 5px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+      }
+
+      a:focus {
+        outline: 3px dashed #ffcc00; /* High contrast dashed yellow outline */
+        outline-offset: 4px; /* Space between the outline and the element */
+      }
+
+      img {
+        transition: transform 0.3s ease;
+      }
+
+      a:hover img {
+        transform: scale(1.1); /* Zoom effect */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Mit Billedgalleri</h1>
+    <div class="gallery">
+      <a href="img/1.jpg" data-lightbox="roadtrip" title="Billede 1">
+        <img src="img/1t.jpg" alt="Billede 1 thumbnail" />
+        <span class="caption">En smuk face</span>
+      </a>
+
+      <a href="img/2.jpg" data-lightbox="roadtrip" title="Billede 2">
+        <img src="img/2t.jpg" alt="Billede 2 thumbnail" />
+        <span class="caption">En smuk face</span>
+      </a>
+      <a href="img/3.jpg" data-lightbox="roadtrip" title="Billede 3">
+        <img src="img/3t.jpg" alt="Billede 3 thumbnail" />
+        <span class="caption">En smuk face</span>
+      </a>
+      <!-- Gentag for flere billeder -->
+    </div>
+
+    <script src="dist/js/lightbox-plus-jquery.js"></script>
+  </body>
+</html>
